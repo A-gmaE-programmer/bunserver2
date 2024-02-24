@@ -2,13 +2,18 @@ console.log("Starting server 2.0");
 // Package imports
 import { Elysia, t } from "elysia";
 import { html } from "@elysiajs/html";
+import { staticPlugin } from '@elysiajs/static';
 // Local imports
 import { BaseHtml, Index } from "./components.tsx";
-import { todos, createItem, toggleItem, delItem, TodoList, TodoItem } from "./todoList.tsx";
+import { todos, createItem, toggleItem, delItem, TodoList } from "./todoList.tsx";
+import { Animated } from "./animation.tsx";
 
 const server = new Elysia()
   .use(html())
+  .use(staticPlugin())
   .get("/", () => <BaseHtml><Index/></BaseHtml>)
+  .get("/animate", () => <BaseHtml><Animated /></BaseHtml>)
+  .get("/anime.min.js", () => Bun.file("node_modules/animejs/lib/anime.min.js"))
   .get("/todos", () => <TodoList todos={todos} />)
   .post("/todos", createItem, { body: t.Object({ content: t.String() }) })
   .post("/todos/toggle/:id", toggleItem, { params: t.Object({ id: t.Numeric() }) })
