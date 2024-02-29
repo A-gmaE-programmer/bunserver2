@@ -12,9 +12,11 @@
     "@elysiajs/html": "^0.8.0",
     "@elysiajs/static": "^0.8.1",
     "animejs": "^3.2.2",
-    "elysia": "^0.8.17"
+    "elysia": "^0.8.17",
+    "webpack": "^5.90.3"
   },
   "scripts": {
-    "test": "xss-scan"
+    "test": "xss-scan",
+    "dev": "webpack && bun run --watch src/index.tsx"
   }
 }
