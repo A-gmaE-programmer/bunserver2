@@ -28,6 +28,9 @@ const TopNav = Html.compile(() =>
         hx-target="#todoList"
       >Todo List
       </button>
+      <a href="/public/portfolio.html" class="text-sky-300 hover:text-sky-500 center p-2 px-4 underline">
+        Portfolio
+      </a>
     </nav>
   </header>
 );
